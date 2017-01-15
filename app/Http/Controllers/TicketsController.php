@@ -69,7 +69,7 @@ class TicketsController extends Controller
      */
     public function edit($slug)
     {
-        $ticket = Ticket::whereSlug(@slug)->firstOrFail();
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
         return view('tickets.edit', compact('ticket'));
     }
 
