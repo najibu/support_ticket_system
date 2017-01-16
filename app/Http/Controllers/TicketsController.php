@@ -52,9 +52,9 @@ class TicketsController extends Controller
         );
         Mail::send('emails.ticket', $data, function($message){
             $message->from('ns.najibu@gmail.com', 'Learing Laravel');
-            $message->to('ns.najibu@gmail')->subject('There is a new ticket!');
+            $message->to('ns.najibu@gmail.com')->subject('There is a new ticket!');
         });
-        return redirect('/contact')->with('status', 'Your ticket has been created! Its unique id is: '.$slug);
+        return redirect('/tickets')->with('status', 'Your ticket has been created! Its unique id is: '.$slug);
     }
 
     /**

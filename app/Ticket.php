@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
@@ -23,5 +24,10 @@ class Ticket extends Model
     public function getTitle()
     {
       return $this->title;
+    }
+
+    public function comments()
+    {
+      return $this->hasMany('Comment', 'post_id');
     }
 }

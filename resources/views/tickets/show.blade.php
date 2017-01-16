@@ -18,5 +18,40 @@
       </form>
       <div class="clearfix"></div>
     </div>
+  
+  <div class="well well bs-component">
+    <form action="/comment" method="post" class="form-horizontal">
+      @foreach($errors->all() as $error)
+        <p class="alert alert-danger">{{ $error }}</p>
+      @endforeach
+
+      @if(session('status'))
+        <div class="alert alert-success">
+          {{ session('status') }}
+        </div>
+      @endif
+
+      {!! csrf_field() !!}
+
+      <input type="hidden" name="post_id" value="{!! $ticket->id !!}">
+
+      <fieldset>
+        <legend>Reply</legend>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <textarea name="content" id="content" rows="3" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="reset" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Post</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
   </div>
+</div>
+
 @endsection
