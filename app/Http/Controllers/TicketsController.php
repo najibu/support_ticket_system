@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\TicketFormRequest;
@@ -66,7 +67,9 @@ class TicketsController extends Controller
     public function show($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        return view('tickets.show', compact('ticket'));
+        $comments = $ticket->comments()->get();
+        return view('tickets.show', compact('ticket', 'comments'));
+
     }
 
     /**
